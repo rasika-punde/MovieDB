@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,9 @@
 		F0998EEF254F23CA00A80777 /* GothicA1-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0998EE0254F20C700A80777 /* GothicA1-SemiBold.ttf */; };
 		F0998EF0254F23CA00A80777 /* GothicA1-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0998EE5254F20C800A80777 /* GothicA1-Thin.ttf */; };
 		F0998EF2254F27E700A80777 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0998EF1254F27E700A80777 /* UILabel+Extension.swift */; };
+		F0998EF4254F2DF600A80777 /* ImageEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0998EF3254F2DF600A80777 /* ImageEndPoint.swift */; };
+		F0998EF6254F2FEE00A80777 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0998EF5254F2FEE00A80777 /* UIImageView+Extension.swift */; };
+		F0998EF9254F304400A80777 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = F0998EF8254F304400A80777 /* loader.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,9 @@
 		F0998EE5254F20C800A80777 /* GothicA1-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothicA1-Thin.ttf"; sourceTree = "<group>"; };
 		F0998EE6254F212500A80777 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		F0998EF1254F27E700A80777 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		F0998EF3254F2DF600A80777 /* ImageEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndPoint.swift; sourceTree = "<group>"; };
+		F0998EF5254F2FEE00A80777 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		F0998EF8254F304400A80777 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,6 @@
 				98B9EBC3846FE4D8522542B8 /* Pods-MovieDB.debug.xcconfig */,
 				98BCD34BB2BEC7BCED4BF57C /* Pods-MovieDB.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				F0998EC0254EFE0400A80777 /* MovieEndPoint.swift */,
+				F0998EF3254F2DF600A80777 /* ImageEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 				F0998ED9254F1B7600A80777 /* UIColor+Extension.swift */,
 				F0998EE6254F212500A80777 /* UIFont+Extension.swift */,
 				F0998EF1254F27E700A80777 /* UILabel+Extension.swift */,
+				F0998EF5254F2FEE00A80777 /* UIImageView+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 		F0998EDB254F20AC00A80777 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0998EF7254F303300A80777 /* AnimationFiles */,
 				F0998ED6254F1AF200A80777 /* Utility */,
 				F0998EDC254F20B200A80777 /* FontFiles */,
 			);
@@ -259,6 +267,14 @@
 				F0998EE5254F20C800A80777 /* GothicA1-Thin.ttf */,
 			);
 			path = FontFiles;
+			sourceTree = "<group>";
+		};
+		F0998EF7254F303300A80777 /* AnimationFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F0998EF8254F304400A80777 /* loader.json */,
+			);
+			path = AnimationFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +347,7 @@
 				F0998EE9254F23C500A80777 /* GothicA1-Bold.ttf in Resources */,
 				F0998EEB254F23CA00A80777 /* GothicA1-ExtraLight.ttf in Resources */,
 				F0998ED5254F0C4000A80777 /* MovieTableViewCell.xib in Resources */,
+				F0998EF9254F304400A80777 /* loader.json in Resources */,
 				F0998EEF254F23CA00A80777 /* GothicA1-SemiBold.ttf in Resources */,
 				F0998EEA254F23CA00A80777 /* GothicA1-ExtraBold.ttf in Resources */,
 				F0998ECB254F054100A80777 /* Main.storyboard in Resources */,
@@ -404,6 +421,8 @@
 				F0998EBB254EFD9E00A80777 /* HTTPTask.swift in Sources */,
 				F0998EB3254EFD3800A80777 /* JSONParameterEncoder.swift in Sources */,
 				F0998EC1254EFE0400A80777 /* MovieEndPoint.swift in Sources */,
+				F0998EF6254F2FEE00A80777 /* UIImageView+Extension.swift in Sources */,
+				F0998EF4254F2DF600A80777 /* ImageEndPoint.swift in Sources */,
 				F0998EB9254EFD8700A80777 /* HTTPMethod.swift in Sources */,
 				F0998ECF254F073F00A80777 /* MovieListViewModel.swift in Sources */,
 			);

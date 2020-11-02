@@ -26,6 +26,7 @@ enum Result<String>{
 struct NetworkManager {
     static let environment : NetworkEnvironment = .production
     static let MovieAPIKey = "87d8ebfa0dd244228eb14fd4637c7947"
+    static let baseImagePath = "http://image.tmdb.org/t/p/w500/"
     let router = Router<MovieApi>()
 
     func getNewMovies(page: Int, completion: @escaping (_ movie: [Movie]?,_ error: String?)->()){

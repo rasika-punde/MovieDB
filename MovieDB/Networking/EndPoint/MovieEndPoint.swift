@@ -15,10 +15,10 @@ enum NetworkEnvironment {
 }
 
 public enum MovieApi {
-    case recommended(id:Int)
-    case popular(page:Int)
-    case newMovies(page:Int)
-    case video(id:Int)
+    case recommended(id: Int)
+    case popular(page: Int)
+    case newMovies(page: Int)
+    case video(id: Int)
 }
 
 extension MovieApi: EndPointType {
