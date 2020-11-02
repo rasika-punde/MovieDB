@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MovieDB
+
+  Created by Punde, Rasika Nanasaheb on 02/11/20.
+  Copyright © 2020 Rasika Punde. All rights reserved.
+*/
+
+"SearchBar.Placeholder" = "Search Movies";
+"Filter.NoResultFound" = "No movie found!";
+"Filter.ShowResult" = "Filtering %d of %d";

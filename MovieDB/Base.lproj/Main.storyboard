@@ -39,12 +39,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fUn-Jh-wfX"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-xf-LqH" customClass="SearchFooter" customModule="MovieDB">
+                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="sRg-lq-ZEx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PNL-Ez-gHI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CLf-s6-jzh"/>
                             <constraint firstAttribute="bottom" secondItem="PNL-Ez-gHI" secondAttribute="bottom" id="Qrz-WC-8G1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mDn-xf-LqH" secondAttribute="trailing" id="VLf-Gc-vXL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PNL-Ez-gHI" secondAttribute="trailing" id="Wyj-Gi-2gB"/>
+                            <constraint firstAttribute="bottom" secondItem="mDn-xf-LqH" secondAttribute="bottom" id="m6B-3b-1e1"/>
+                            <constraint firstItem="mDn-xf-LqH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="v9K-TN-wNs"/>
                             <constraint firstItem="PNL-Ez-gHI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zDI-bq-Gfk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -52,6 +62,8 @@
                     <navigationItem key="navigationItem" id="T4M-jm-ot5"/>
                     <connections>
                         <outlet property="moviesListTableView" destination="PNL-Ez-gHI" id="Y1c-EB-YvB"/>
+                        <outlet property="searchFooter" destination="mDn-xf-LqH" id="k8y-h7-J2V"/>
+                        <outlet property="searchFooterBottomConstraint" destination="m6B-3b-1e1" id="qVh-rl-ffg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
