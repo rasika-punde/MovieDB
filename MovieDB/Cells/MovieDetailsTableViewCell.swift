@@ -37,7 +37,9 @@ class MovieDetailsTableViewCell: UITableViewCell {
         scoreView.layer.shadowRadius = scoreView.frame.height/2
         scoreView.layer.cornerRadius = scoreView.frame.height/2
     }
-    
+
+    /// Set up UI cell
+    /// - Parameter movie: set up UI with Movie object
     func setUpView(movie: Movie) {
         genreCollectionView.backgroundColor = .clear
         self.genreCollectionView.register(UINib(nibName: GenreCollectionViewCell.cellId, bundle: nil), forCellWithReuseIdentifier: GenreCollectionViewCell.cellId)
@@ -53,7 +55,7 @@ class MovieDetailsTableViewCell: UITableViewCell {
         releaseDateLabel.textColor = .black
 
         let attrString = NSMutableAttributedString(string: "\(movie.rating)",
-                                                   attributes: [NSAttributedString.Key.font: UIFont.getGothicSemiBoldFont(size: 20.0)]);
+                                                   attributes: [NSAttributedString.Key.font: UIFont.getGothicBoldFont(size: 20.0)]);
 
         attrString.append(NSMutableAttributedString(string: "/5",
                                                     attributes: [NSAttributedString.Key.font: UIFont.getGothicSemiBoldFont(size: 14.0)]));
@@ -65,10 +67,13 @@ class MovieDetailsTableViewCell: UITableViewCell {
         rateNowLabel.font = .getGothicBoldFont(size: 14.0)
 
         genreCollectionView.reloadData()
+
+        //start loading indicator here
         let imageUrl = NetworkManager.baseImagePath + movie.posterPath
         posterImageView.downloadImage(urlString: imageUrl) { [weak self] (image, error) in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
+                //stop loading indicator here
                 strongSelf.resetImageView()
                 if let image = image {
                     strongSelf.posterImageView.image = image
@@ -85,13 +90,14 @@ class MovieDetailsTableViewCell: UITableViewCell {
         addFavouriteMovie.setBackgroundImage(UIImage(named: "plusImage"), for: .normal)
     }
 
+    /// we can show placeholder here when getImage API call fails
     private func resetImageView() {
         self.posterImageView.image = nil
         //Show Placeholder Image
     }
-    
 }
 
+//MARK: - UICollectionView dataSource methods
 extension MovieDetailsTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -108,7 +114,7 @@ extension MovieDetailsTableViewCell: UICollectionViewDataSource {
     }
 }
 
-
+//MARK: - UICollectionView flowLayout methods
 extension MovieDetailsTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 110, height: 40)

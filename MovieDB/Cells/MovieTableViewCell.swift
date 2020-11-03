@@ -43,9 +43,11 @@ class MovieTableViewCell: UITableViewCell {
 
         let imageUrl = NetworkManager.baseImagePath + movie.posterPath
 
+        //Show loading indicator here
         moviePosterImageView.downloadImage(urlString: imageUrl) { [weak self] (image, error) in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
+                //stop loading indicator here
                 strongSelf.resetImageView()
                 if let image = image {
                     strongSelf.moviePosterImageView.image = image
@@ -59,10 +61,12 @@ class MovieTableViewCell: UITableViewCell {
         }
     }
 
+    //Show placeholder here
     private func resetImageView() {
         self.moviePosterImageView.image = nil
     }
 
+    // Show gradient backgroundColor
     private func setGradientBackground() {
         let colorTop =  UIColor.gradientTopColor().cgColor
         let colorBottom = UIColor.gradientBottomColor().cgColor

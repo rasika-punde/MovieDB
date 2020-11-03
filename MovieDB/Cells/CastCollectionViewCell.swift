@@ -15,8 +15,10 @@ class CastCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var castProfileImageView: UIImageView!
 
-    func setUpView(cast: Cast) {
 
+    /// Set up view
+    /// - Parameter cast: set up UI based on input cast
+    func setUpView(cast: Cast) {
         nameLabel.text = cast.name
         nameLabel.font = .getGothicBoldFont(size: 14.0)
         nameLabel.textColor = .black
@@ -25,9 +27,11 @@ class CastCollectionViewCell: UICollectionViewCell {
         guard let path = cast.profilePath else { return }
         let imageUrl = NetworkManager.baseImagePath + path
 
+        //Show loading indicator here
         castProfileImageView.downloadImage(urlString: imageUrl) { [weak self] (image, error) in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
+                //stop loading indicator here
                 strongSelf.resetImageView()
                 if let image = image {
                     strongSelf.castProfileImageView.image = image
@@ -41,6 +45,7 @@ class CastCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    /// If there is no image then show placeholder current there is nothing, but we can show placeholder image here
     private func resetImageView() {
         self.castProfileImageView.image = nil
         //Show Placeholder

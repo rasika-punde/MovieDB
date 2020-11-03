@@ -14,6 +14,8 @@ class SummaryTableViewCell: UITableViewCell {
     @IBOutlet private weak var summaryTitleLabel: UILabel!
     @IBOutlet private weak var summaryLabel: UILabel!
 
+    /// Set up UI cell
+    /// - Parameter summaryText: Based on summary text update label
     func setUpView(summaryText: String) {
         summaryLabel.text = summaryText
         summaryLabel.font = .getGothicMediumFont(size: 16.0)

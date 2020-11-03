@@ -33,6 +33,7 @@ class CastAndCrewTableViewCell: UITableViewCell {
         setUpView()
     }
 
+    /// Set up UI methods
     private func setUpView() {
         castAndCrewLabel.text = NSLocalizedString("CastAndCrew.Title", comment: "")
         castAndCrewLabel.font = .getGothicBoldFont(size: 20.0)
@@ -56,6 +57,7 @@ class CastAndCrewTableViewCell: UITableViewCell {
     }
 }
 
+//MARK: - UICollectionView delegate and dataSource methods
 extension CastAndCrewTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

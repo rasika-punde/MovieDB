@@ -13,8 +13,8 @@ class GenreCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var genreTitleLabel: UILabel!
     @IBOutlet weak var genreTitleBorderView: UIView!
-    
-    
+
+    /// Set up UI for cell
     func setupUI() {
         genreTitleBorderView.backgroundColor = .white
         genreTitleBorderView.layoutIfNeeded()

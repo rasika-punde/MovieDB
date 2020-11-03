@@ -39,6 +39,10 @@ class MovieListViewController: UIViewController {
         viewModel.getLatestMoviesList()
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     private func observeotification() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
@@ -49,6 +53,7 @@ class MovieListViewController: UIViewController {
                                         self.handleKeyboard(notification: notification) }
     }
 
+    //MARK: - Setup View methods
     private func setUpView() {
         moviesListTableView.delegate = self
         moviesListTableView.dataSource = self
@@ -62,22 +67,6 @@ class MovieListViewController: UIViewController {
         definesPresentationContext = true
 
         registerCells()
-    }
-
-    private func registerCells() {
-        moviesListTableView.register(UINib(nibName: MovieTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: MovieTableViewCell.cellId)
-    }
-
-    private func bindViewModel() {
-        viewModel.reloadViewWithLatestMoviesList = { [weak self] in
-            self?.reloadView()
-        }
-    }
-
-    private func reloadView() {
-        DispatchQueue.main.async {
-            self.moviesListTableView.reloadData()
-        }
     }
 
     private func handleKeyboard(notification: Notification) {
@@ -108,8 +97,27 @@ class MovieListViewController: UIViewController {
 
         moviesListTableView.scrollIndicatorInsets = moviesListTableView.contentInset
     }
+
+    private func registerCells() {
+        moviesListTableView.register(UINib(nibName: MovieTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: MovieTableViewCell.cellId)
+    }
+
+    //MARK: - Bind View Model
+    private func bindViewModel() {
+        viewModel.reloadViewWithLatestMoviesList = { [weak self] in
+            self?.reloadView()
+        }
+    }
+
+    //MARK: - Reload TableView
+    private func reloadView() {
+        DispatchQueue.main.async {
+            self.moviesListTableView.reloadData()
+        }
+    }
 }
 
+//MARK: - UITableView delegate and data source methods
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let moviesCount = viewModel.getMoviesCount(isFiltering: isFiltering)
@@ -151,6 +159,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - Search delegate method
 extension MovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar

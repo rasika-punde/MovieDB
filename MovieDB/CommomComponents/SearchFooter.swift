@@ -14,13 +14,11 @@ class SearchFooter: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         configureView()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
         configureView()
     }
 
@@ -45,19 +43,19 @@ class SearchFooter: UIView {
         }
     }
 
-    func hideFooter() {
+    private func hideFooter() {
         UIView.animate(withDuration: 0.7) {
             self.alpha = 0.0
         }
     }
 
-    func showFooter() {
+    private func showFooter() {
         UIView.animate(withDuration: 0.7) {
             self.alpha = 1.0
         }
     }
 
-    func configureView() {
+    private func configureView() {
         backgroundColor = UIColor.gradientTopColor()
         alpha = 0.0
 

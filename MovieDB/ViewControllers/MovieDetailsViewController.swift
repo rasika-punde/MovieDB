@@ -31,6 +31,7 @@ class MovieDetailsViewController: UIViewController {
         setUpView()
     }
 
+    //MARK: - Setup UI methods
     private func setUpView() {
         movieDetailsTableView.delegate = self
         movieDetailsTableView.dataSource = self
@@ -46,6 +47,7 @@ class MovieDetailsViewController: UIViewController {
          self.movieDetailsTableView.register(UINib(nibName: DetailsCellType.summaryCell.rawValue, bundle: nil), forCellReuseIdentifier: DetailsCellType.summaryCell.rawValue)
     }
 
+    //MARK: - Bind ViewModel
     private func bindViewModel() {
         viewModel.reloadViewWithLatestMoviesDetails = { [weak self] in
             DispatchQueue.main.async {
@@ -55,6 +57,7 @@ class MovieDetailsViewController: UIViewController {
     }
 }
 
+//MARK: - UITableView delegate and dataSource methods
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.movieDetailsContent.count
