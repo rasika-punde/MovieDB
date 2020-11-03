@@ -9,3 +9,6 @@
 "SearchBar.Placeholder" = "Search Movies";
 "Filter.NoResultFound" = "No movie found!";
 "Filter.ShowResult" = "Filtering %d of %d";
+"Overview.Title" = "Overview";
+"CastAndCrew.Title" = "Cast & Crew";
+"RateNow.Title" = "Rate Now";

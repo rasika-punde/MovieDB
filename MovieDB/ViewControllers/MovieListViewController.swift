@@ -110,7 +110,7 @@ class MovieListViewController: UIViewController {
     }
 }
 
-extension MovieListViewController: UITableViewDelegate, UITableViewDataSource  {
+extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let moviesCount = viewModel.getMoviesCount(isFiltering: isFiltering)
 
@@ -140,8 +140,13 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource  {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MovieDetailsViewController.id) as? MovieDetailsViewController else { return }
-        let movie = viewModel.getMovie(for: indexPath, isFiltering: isFiltering)
-        detailController.movie = movie
+        guard let movie = viewModel.getMovie(for: indexPath, isFiltering: isFiltering) else {
+            return
+        }
+
+        let viewModel = MovieDetailsViewModel(movie: movie)
+        detailController.viewModel = viewModel
+        
         navigationController?.pushViewController(detailController, animated: true)
     }
 }

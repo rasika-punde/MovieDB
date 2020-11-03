@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
@@ -18,8 +17,6 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet private weak var releaseDateLabel: UILabel!
     @IBOutlet private weak var contaierView: UIView!
     @IBOutlet private weak var moviePosterImageView: UIImageView!
-
-    private var loadingAnimView: AnimationView?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,12 +41,7 @@ class MovieTableViewCell: UITableViewCell {
         bookButton.layer.cornerRadius = 10.0
 
 
-
-
         let imageUrl = NetworkManager.baseImagePath + movie.posterPath
-
-        loadingAnimView = moviePosterImageView.addAnimationView(name: "loader")
-        loadingAnimView?.play()
 
         moviePosterImageView.downloadImage(urlString: imageUrl) { [weak self] (image, error) in
             DispatchQueue.main.async { [weak self] in
@@ -69,9 +61,6 @@ class MovieTableViewCell: UITableViewCell {
 
     private func resetImageView() {
         self.moviePosterImageView.image = nil
-        self.loadingAnimView?.stop()
-        self.loadingAnimView?.removeFromSuperview()
-        self.loadingAnimView = nil
     }
 
     private func setGradientBackground() {

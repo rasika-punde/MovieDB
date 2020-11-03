@@ -15,10 +15,14 @@ enum NetworkEnvironment {
 }
 
 public enum MovieApi {
+    case guestSession
     case recommended(id: Int)
     case popular(page: Int)
     case newMovies(page: Int)
-    case video(id: Int)
+    case castAndCrew(id: Int)
+    case movieDetails(id: Int)
+    case movieReviews(id: Int)
+    case similarMovies(id: Int)
 }
 
 extension MovieApi: EndPointType {
@@ -44,8 +48,16 @@ extension MovieApi: EndPointType {
             return "popular"
         case .newMovies:
             return "now_playing"
-        case .video(let id):
-            return "\(id)/videos"
+        case .movieDetails(let id):
+            return "movie/\(id)"
+        case .movieReviews(let id):
+            return "\(id)/reviews"
+        case .similarMovies(let id):
+            return "\(id)/similar"
+        case .castAndCrew(let id):
+            return "\(id)/credits"
+        case .guestSession:
+            return "authentication/guest_session/new"
         }
     }
 
@@ -60,6 +72,26 @@ extension MovieApi: EndPointType {
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: ["page":page,
                                                       "api_key":NetworkManager.MovieAPIKey])
+        case .castAndCrew:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key":NetworkManager.MovieAPIKey])
+        case .movieDetails:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key":NetworkManager.MovieAPIKey])
+        case .similarMovies:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key":NetworkManager.MovieAPIKey])
+        case .movieReviews:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key":NetworkManager.MovieAPIKey])
+        case .guestSession:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key":NetworkManager.MovieAPIKey])
         default:
             return .request
         }

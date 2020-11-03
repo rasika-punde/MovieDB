@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import Lottie
 
 extension UIImageView {
     func downloadImage(urlString: String, completion: @escaping ((UIImage?, Error?) -> Void)) {
@@ -27,15 +26,5 @@ extension UIImageView {
                 completion(nil, error)
             }
         }
-    }
-
-    func addAnimationView(name: String, withContentMode: UIView.ContentMode = .scaleAspectFill) -> AnimationView {
-        let size = CGSize(width: self.frame.size.width, height: self.frame.size.height)
-        let animationView = AnimationView(name: name)
-        animationView.contentMode = withContentMode
-        animationView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        animationView.loopMode = .loop
-        self.addSubview(animationView)
-        return animationView
     }
 }
